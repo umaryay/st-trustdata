@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Create Account - ST TRUSTDATA</title>
+
+  <link rel="stylesheet" href="Style.css">
+
+  <style>
+    .auth-container {
+      max-width: 420px;
+      margin: 50px auto;
+      padding: 25px;
+    }
+
+    .auth-card {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px #00000010;
+    }
+
+    .auth-card h2 {
+      color: #0756a5;
+      margin-bottom: 10px;
+    }
+
+    .auth-card p {
+      color: #718198;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .auth-card input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      border: 1px solid #dce4ee;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .auth-card button {
+      width: 100%;
+      padding: 14px;
+      background: #0756a5;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    #message {
+      margin-top: 15px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="auth-container">
+
+    <div class="auth-card">
+
+      <h2>ST TRUSTDATA</h2>
+
+      <p>Create your student account.</p>
+
+      <form id="registerForm">
+
+        <input
+          type="text"
+          id="fullName"
+          placeholder="Full Name"
+          required
+        >
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Email Address"
+          required
+        >
+
+        <input
+          type="password"
+          id="password"
+          placeholder="Password (minimum 6 characters)"
+          minlength="6"
+          required
+        >
+
+        <button type="submit" id="registerButton">
+          Create Account
+        </button>
+
+      </form>
+
+      <div id="message"></div>
+
+      <p>
+        Already have an account?
+        <a href="login.html">Login</a>
+      </p>
+
+      <p>Prototype account only. No real money.</p>
+
+    </div>
+
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+
+  <script src="firebase.js"></script>
+
+</body>
+</html>￼Enter
