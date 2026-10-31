@@ -1,3 +1,4 @@
+alert("ST TRUSTDATA AUTH.JS IS WORKING!");
 // ST TRUSTDATA - USER REGISTRATION
 
 const registerForm = document.getElementById("registerForm");
