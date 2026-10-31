@@ -4,7 +4,9 @@ alert("LOGIN.JS IS WORKING!");
 const loginForm = document.getElementById("loginForm");
 const message = document.getElementById("message");
 const loginButton = document.getElementById("loginButton");
-
+alert("Form found: " + !!loginForm);
+alert("Message found: " + !!message);
+alert("Button found: " + !!loginButton);
 loginForm.addEventListener("submit", async function(event) {
   event.preventDefault();
 
