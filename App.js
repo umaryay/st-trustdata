@@ -91,126 +91,33 @@ function displayTransactions() {
     transactions
   );
 }
-const storage_balance = "sttestbalance";
-const storage_transactions = "sttesttransactions";
 
-let balance = number(localstorage.getitem(storage_balance) || 0);
-
-function formatmoney(amount) {
-  return "₦" + number(amount).tolocalestring("en-ng", {
-    minimumfractiondigits: 2,
-    maximumfractiondigits: 2
-  });
-}
-
-function updatebalance() {
-  document.getelementbyid("balance").textcontent =
-    formatmoney(balance);
-
-  document.getelementbyid("walletbalance").textcontent =
-    formatmoney(balance);
-}
-
-function gettransactions() {
-  try {
-    const data = json.parse(
-      localstorage.getitem(storage_transactions) || "[]"
-    );
-
-    return array.isarray(data) ? data : [];
-  } catch {
-    return [];
-  }
-}
-
-function savetransaction(name, amount) {
-  const transactions = gettransactions();
-
-  transactions.unshift({
-    name: name,
-    amount: amount,
-    date: new date().tolocalestring()
-  });
-
-  localstorage.setitem(
-    storage_transactions,
-    json.stringify(transactions.slice(0, 100))
-  );
-
-  displaytransactions();
-}
-
-function addmoney() {
-  const input = prompt("enter test money amount in naira:");
-
-  if (input === null) return;
-
-  const amount = number(input);
-
-  if (!number.isfinite(amount) || amount <= 0) {
-    alert("please enter a valid amount.");
-    return;
-  }
-
-  if (amount > 1000000) {
-    alert("maximum test amount is ₦1,000,000.");
-    return;
-  }
-
-  balance += amount;
-
-  localstorage.setitem(storage_balance, string(balance));
-
-  savetransaction("test money added", amount);
-
-  updatebalance();
-
-  alert(
-    "test money added successfully.\n\n" +
-    "this is not real money."
-  );
-}
-
-function displaytransactions() {
-  const transactions = gettransactions();
-
-  rendertransactionlist(
-    "hometransactions",
-    transactions.slice(0, 3)
-  );
-
-  rendertransactionlist(
-    "alltransactions",
-    transactions
-  );
-}
-
-function rendertransactionlist(elementid, transactions) {
-  const element = document.getelementbyid(elementid);
+function renderTransactionList(elementId, transactions) {
+  const element = document.getElementById(elementId);
 
   if (transactions.length === 0) {
-    element.classname = "empty-state";
-    element.textcontent = "no transactions yet.";
+    element.className = "empty-state";
+    element.textContent = "No transactions yet.";
     return;
   }
 
-  element.classname = "transaction-list";
+  element.className = "transaction-list";
 
-  element.innerhtml = transactions.map(item => `
+  element.innerHTML = transactions.map(item => `
     <div class="transaction-item">
-      <strong>${escapehtml(item.name)}</strong>
+      <strong>${escapeHTML(item.name)}</strong>
 
-      <small>${escapehtml(item.date)}</small>
+      <small>${escapeHTML(item.date)}</small>
 
       <span class="transaction-amount">
-        ${formatmoney(item.amount)}
+        ${formatMoney(item.amount)}
       </span>
     </div>
   `).join("");
 }
 
-function escapehtml(value) {
-  return string(value).replace(/[&<>"']/g, character => ({
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, character => ({
     "&": "&amp;",
     "<": "&lt;",
     ">": "&gt;",
@@ -219,168 +126,76 @@ function escapehtml(value) {
   })[character]);
 }
 
-function showpage(pageid) {
-  const allowedpages = [
-    "homepage",
-    "transactionspage",
-    "walletpage",
-    "profilepage"
+function showPage(pageId) {
+  const allowedPages = [
+    "homePage",
+    "transactionsPage",
+    "walletPage",
+    "profilePage"
   ];
 
-  if (!allowedpages.includes(pageid)) return;
+  if (!allowedPages.includes(pageId)) return;
 
-  document.queryselectorall(".page-section").foreach(page => {
-    page.hidden = page.id !== pageid;
+  document.querySelectorAll(".page-section").forEach(page => {
+    page.hidden = page.id !== pageId;
   });
 
-  document.queryselectorall(".bottom-nav button").foreach(button => {
-    button.classlist.toggle(
+  document.querySelectorAll(".bottom-nav button").forEach(button => {
+    button.classList.toggle(
       "active",
-      button.dataset.page === pageid
+      button.dataset.page === pageId
     );
   });
 
-  window.scrollto({ top: 0, behavior: "smooth" });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 
-  displaytransactions();
-  updatebalance();
+  displayTransactions();
+  updateBalance();
 }
 
-function buyservice(service) {
-  if (service === "data") {
+function buyService(service) {
+  if (service === "Data") {
     const network = prompt(
-      "choose network:\n\n" +
-      "1. mtn\n" +
-      "2. airtel\n" +
-      "3. glo\n" +
+      "Choose network:\n\n" +
+      "1. MTN\n" +
+      "2. Airtel\n" +
+      "3. Glo\n" +
       "4. 9mobile"
     );
 
     if (network === null) return;
 
     const networks = {
-      "1": "mtn",
-      "2": "airtel",
-      "3": "glo",
+      "1": "MTN",
+      "2": "Airtel",
+      "3": "Glo",
       "4": "9mobile"
     };
 
     if (!networks[network]) {
-      alert("please select a valid network.");
+      alert("Please select a valid network.");
       return;
     }
 
     alert(
       networks[network] +
       " selected.\n\n" +
-      "real data purchases are not enabled yet."
+      "Real data purchases are not enabled yet."
     );
 
     return;
   }
 
-  if (service === "airtime") {
-    alert("airtime purchases are not enabled yet.");
+  if (service === "Airtime") {
+    alert("Airtime purchases are not enabled yet.");
     return;
   }
 
-  if (service === "bills") {
-    alert("bill payments are not enabled yet.");
+  if (service === "Bills") {
+    alert("Bill payments are not enabled yet.");
   }
 }
 
-updatebalance();
-displaytransactions();
-showpage("homepage");￼enterSTORAGE_BALANCE = "stTestBalance";
-const STORAGE_TRANSACTIONS = "stTestTransactions";
-
-let balance = Number(localStorage.getItem(STORAGE_BALANCE) || 0);
-
-function formatMoney(amount) {
-  return "₦" + Number(amount).toLocaleString("en-NG", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  });
-}
-
-function updateBalance() {
-  document.getElementById("balance").textContent =
-    formatMoney(balance);
-
-  document.getElementById("walletBalance").textContent =
-    formatMoney(balance);
-}
-
-function getTransactions() {
-  try {
-    const data = JSON.parse(
-      localStorage.getItem(STORAGE_TRANSACTIONS) || "[]"
-    );
-
-    return Array.isArray(data) ? data : [];
-  } catch {
-    return [];
-  }
-}
-
-function saveTransaction(name, amount) {
-  const transactions = getTransactions();
-
-  transactions.unshift({
-    name: name,
-    amount: amount,
-    date: new Date().toLocaleString()
-  });
-
-  localStorage.setItem(
-    STORAGE_TRANSACTIONS,
-    JSON.stringify(transactions.slice(0, 100))
-  );
-
-  displayTransactions();
-}
-
-function addMoney() {
-  const input = prompt("Enter test money amount in naira:");
-
-  if (input === null) return;
-
-  const amount = Number(input);
-
-  if (!Number.isFinite(amount) || amount <= 0) {
-    alert("Please enter a valid amount.");
-    return;
-  }
-
-  if (amount > 1000000) {
-    alert("Maximum test amount is ₦1,000,000.");
-    return;
-  }
-
-  balance += amount;
-
-  localStorage.setItem(STORAGE_BALANCE, String(balance));
-
-  saveTransaction("Test Money Added", amount);
-
-  updateBalance();
-
-  alert(
-    "Test money added successfully.\n\n" +
-    "This is not real money."
-  );
-}
-
-function displayTransactions() {
-  const transactions = getTransactions();
-
-  renderTransactionList(
-    "homeTransactions",
-    transactions.slice(0, 3)
-  );
-
-  renderTransactionList(
-    "allTransactions",
-    transactions
-  );
-}
+updateBalance();
+displayTransactions();
+showPage("homePage");
