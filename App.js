@@ -13,8 +13,12 @@ firebase.auth().onAuthStateChanged(function(user) {
   if (profileName) {
     profileName.textContent =
       user.displayName || "ST TRUSTDATA User";
-  }
+    const profileEmail = document.getElementById("profileEmail");
 
+if (profileEmail) {
+  profileEmail.textContent = user.email || "No email";
+}
+  }
   // Initialize dashboard
   updateBalance();
   displayTransactions();
@@ -217,4 +221,16 @@ function buyService(service) {
   if (service === "Bills") {
     alert("Bill payments are not enabled yet.");
   }
+}
+// LOGOUT SYSTEM
+function logout() {
+  firebase.auth().signOut()
+    .then(function() {
+      localStorage.removeItem("loggedIn");
+      window.location.replace("login.html");
+    })
+    .catch(function(error) {
+      alert("Logout failed. Please try again.");
+      console.error(error);
+    });
 }
