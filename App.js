@@ -1,3 +1,26 @@
+// FIREBASE AUTHENTICATION CHECK
+
+firebase.auth().onAuthStateChanged(function(user) {
+
+  if (!user) {
+    window.location.replace("login.html");
+    return;
+  }
+
+  // Display logged-in user
+  const profileName = document.getElementById("profileName");
+
+  if (profileName) {
+    profileName.textContent =
+      user.displayName || "ST TRUSTDATA User";
+  }
+
+  // Initialize dashboard
+  updateBalance();
+  displayTransactions();
+  showPage("homePage");
+
+});
 const STORAGE_BALANCE = "stTestBalance";
 const STORAGE_TRANSACTIONS = "stTestTransactions";
 
@@ -195,7 +218,3 @@ function buyService(service) {
     alert("Bill payments are not enabled yet.");
   }
 }
-
-updateBalance();
-displayTransactions();
-showPage("homePage");
