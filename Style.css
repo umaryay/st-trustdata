@@ -1,0 +1,429 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  }
+
+:root {
+--blue: #0756a5;
+--dark-blue: #07356a;
+--green: #16b84e;
+--background: #f3f7fc;
+--text: #18334f;
+--muted: #718198;
+}
+
+body {
+font-family: Arial, sans-serif;
+background: var(--background);
+color: var(--text);
+padding-bottom: 85px;
+}
+
+.top-header {
+background: white;
+padding: 18px 16px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+box-shadow: 0 2px 12px #00000008;
+}
+
+.brand {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.logo {
+width: 48px;
+height: 48px;
+display: grid;
+place-items: center;
+border-radius: 14px;
+background: linear-gradient(135deg, var(--blue), var(--green));
+color: white;
+font-size: 20px;
+font-weight: bold;
+}
+
+.brand h1 {
+color: var(--blue);
+font-size: 18px;
+}
+
+.brand p {
+font-size: 9px;
+color: var(--muted);
+margin-top: 4px;
+}
+
+.notification {
+border: none;
+background: #edf4fc;
+padding: 10px;
+border-radius: 12px;
+font-size: 18px;
+}
+
+main {
+max-width: 500px;
+margin: auto;
+padding: 18px 16px;
+}
+
+.welcome {
+margin: 8px 0 20px;
+}
+
+.welcome > p:first-child {
+color: var(--green);
+font-weight: bold;
+font-size: 12px;
+margin-bottom: 8px;
+}
+
+.welcome h2 {
+font-size: 23px;
+line-height: 1.3;
+margin-bottom: 7px;
+}
+
+.welcome p:last-child {
+font-size: 13px;
+color: var(--muted);
+}
+
+.balance-card {
+background: linear-gradient(135deg, #0756a5, #07356a);
+color: white;
+border-radius: 22px;
+padding: 22px 18px;
+box-shadow: 0 10px 25px #0756a52b;
+}
+
+.balance-top {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 8px;
+font-size: 12px;
+}
+
+.test-badge {
+background: #ffffff20;
+border: 1px solid #ffffff50;
+padding: 5px 8px;
+border-radius: 20px;
+font-size: 9px;
+}
+
+.balance-card h2 {
+font-size: 32px;
+margin: 20px 0 7px;
+}
+
+.balance-card > p {
+font-size: 11px;
+color: #dce9f8;
+}
+
+.balance-actions {
+display: flex;
+gap: 10px;
+margin-top: 22px;
+}
+
+.balance-actions button {
+flex: 1;
+padding: 12px 7px;
+border: none;
+border-radius: 10px;
+font-weight: bold;
+font-size: 12px;
+background: white;
+color: var(--blue);
+}
+
+.balance-actions button:last-child {
+background: #ffffff20;
+border: 1px solid #ffffff70;
+color: white;
+}
+
+.services,
+.transactions {
+margin-top: 28px;
+}
+
+.services h2,
+.transactions h2 {
+font-size: 18px;
+margin-bottom: 16px;
+}
+
+.service-grid {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 13px;
+}
+
+.service {
+background: white;
+border: 1px solid #e7edf5;
+border-radius: 16px;
+padding: 18px 10px;
+text-align: left;
+color: var(--text);
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 8px;
+box-shadow: 0 4px 12px #173c6108;
+}
+
+.service-icon {
+width: 43px;
+height: 43px;
+border-radius: 13px;
+display: grid;
+place-items: center;
+background: #eaf3ff;
+font-size: 22px;
+}
+
+.service:nth-child(even) .service-icon {
+background: #e7f9ed;
+}
+
+.service strong {
+font-size: 14px;
+}
+
+.service small {
+color: var(--muted);
+font-size: 11px;
+}
+
+.empty-state {
+text-align: center;
+padding: 25px 10px;
+background: white;
+border-radius: 16px;
+border: 1px solid #e7edf5;
+}
+
+.empty-state span {
+font-size: 30px;
+}
+
+.empty-state p {
+margin: 10px 0 6px;
+font-weight: bold;
+}
+
+.empty-state small {
+color: var(--muted);
+font-size: 12px;
+}
+
+.trust-note {
+display: flex;
+gap: 12px;
+align-items: flex-start;
+margin-top: 22px;
+padding: 15px;
+border-radius: 14px;
+background: #e7f8ed;
+color: #176d37;
+}
+
+.trust-note > span {
+font-size: 22px;
+}
+
+.trust-note strong {
+font-size: 13px;
+}
+
+.trust-note p {
+font-size: 11px;
+line-height: 1.5;
+margin-top: 5px;
+}
+
+.bottom-nav {
+position: fixed;
+bottom: 0;
+left: 0;
+right: 0;
+display: flex;
+justify-content: space-around;
+background: white;
+padding: 10px 5px calc(10px + env(safe-area-inset-bottom));
+box-shadow: 0 -3px 15px #0000000b;
+z-index: 100;
+}
+
+.bottom-nav button {
+flex: 1;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 5px;
+border: none;
+background: transparent;
+color: var(--muted);
+font-size: 19px;
+}
+
+.bottom-nav button span {
+font-size: 11px;
+}
+
+.bottom-nav button.active {
+color: var(--blue);
+font-weight: bold;
+}
+
+button {
+cursor: pointer;
+}
+/* ST TRUSTDATA MULTI-PAGE UPDATE */
+
+[hidden] {
+  display: none !important;
+}
+
+.page-section {
+  animation: pageFade 0.2s ease-in-out;
+}
+
+@keyframes pageFade {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.page-description {
+  color: #718198;
+  font-size: 13px;
+  margin: 10px 0 20px;
+}
+
+.primary-button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 12px;
+  background: #0756a5;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.profile-card {
+  background: white;
+  margin-top: 20px;
+  padding: 22px 16px;
+  border-radius: 18px;
+  text-align: center;
+  border: 1px solid #e7edf5;
+}
+
+.profile-avatar {
+  width: 75px;
+  height: 75px;
+  margin: 0 auto 15px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0756a5, #16b84e);
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.profile-card h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.profile-card > p {
+  color: #718198;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.profile-detail {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 0;
+  border-top: 1px solid #edf1f6;
+  text-align: left;
+  font-size: 12px;
+}
+
+.profile-detail span {
+  color: #718198;
+}
+
+.profile-detail strong {
+  text-align: right;
+}
+
+.transaction-list {
+  background: white;
+  border-radius: 15px;
+  padding: 12px;
+  overflow-wrap: anywhere;
+}
+
+.transaction-item {
+  padding: 13px 4px;
+  border-bottom: 1px solid #e7edf5;
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.transaction-item strong {
+  font-size: 13px;
+}
+
+.transaction-item small {
+  display: block;
+  color: #718198;
+  margin-top: 6px;
+}
+
+.transaction-item .transaction-amount {
+  display: block;
+  color: #0756a5;
+  font-weight: bold;
+  margin-top: 7px;
+}
+
+.bottom-nav {
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
+}
+
+.bottom-nav button {
+  min-width: 0;
+  gap: 5px;
+}
+
+.bottom-nav button span {
+  font-size: 10px;
+}
+
+.balance-card {
+  overflow-wrap: anywhere;
+}

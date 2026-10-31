@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0756a5">
+
+  <title>ST TRUSTDATA</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="top-header">
+    <div class="brand">
+      <div class="logo">ST</div>
+      <div>
+        <h1>TRUSTDATA</h1>
+        <p>Smart Technology. Trusted Connections.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HOME PAGE -->
+    <section id="homePage" class="page-section">
+
+      <div class="welcome">
+        <p>WELCOME TO ST TRUSTDATA</p>
+        <h2>Your digital world, connected.</h2>
+        <p>Data, airtime and bills in one place.</p>
+      </div>
+
+      <div class="balance-card">
+        <div class="balance-top">
+          <span>💰 Available Balance</span>
+          <span class="test-badge">TEST MODE</span>
+        </div>
+
+        <h2 id="balance">₦0.00</h2>
+
+        <p>Test money only. No real funds.</p>
+
+        <div class="balance-actions">
+          <button onclick="addMoney()">＋ Add Money</button>
+          <button onclick="showPage('walletPage')">My Wallet</button>
+        </div>
+      </div>
+
+      <section class="services">
+        <h2>Our Services</h2>
+
+        <div class="service-grid">
+
+          <button class="service" onclick="buyService('Data')">
+            <span class="service-icon">📶</span>
+            <strong>Buy Data</strong>
+            <small>All networks</small>
+          </button>
+
+          <button class="service" onclick="buyService('Airtime')">
+            <span class="service-icon">📱</span>
+            <strong>Buy Airtime</strong>
+            <small>Recharge phone</small>
+          </button>
+
+          <button class="service" onclick="buyService('Bills')">
+            <span class="service-icon">⚡</span>
+            <strong>Pay Bills</strong>
+            <small>Utility payments</small>
+          </button>
+
+          <button class="service" onclick="showPage('walletPage')">
+            <span class="service-icon">👛</span>
+            <strong>My Wallet</strong>
+            <small>Manage test funds</small>
+          </button>
+
+        </div>
+      </section>
+
+      <section class="transactions">
+        <h2>Recent Transactions</h2>
+        <div id="homeTransactions" class="empty-state">
+          No transactions yet.
+        </div>
+
+        <button class="primary-button"
+          onclick="showPage('transactionsPage')">
+          View All Transactions
+        </button>
+      </section>
+
+    </section>
+
+    <!-- TRANSACTIONS PAGE -->
+    <section id="transactionsPage"
+      class="page-section" hidden>
+
+      <h2>Transaction History</h2>
+      <p class="page-description">
+        Review your recent test activity.
+      </p>
+
+      <div id="allTransactions" class="empty-state">
+        No transactions yet.
+      </div>
+
+    </section>
+
+    <!-- WALLET PAGE -->
+    <section id="walletPage"
+      class="page-section" hidden>
+
+      <h2>My Wallet 👛</h2>
+
+      <div class="balance-card">
+        <p>Available Test Balance</p>
+        <h2 id="walletBalance">₦0.00</h2>
+        <p>Prototype only — not real money.</p>
+      </div>
+
+      <button class="primary-button"
+        onclick="addMoney()">
+        ＋ Add Test Money
+      </button>
+
+      <div class="trust-note">
+        <span>🛡️</span>
+        <div>
+          <strong>Prototype Notice</strong>
+          <p>
+            This wallet does not hold or transfer real money.
+            Real payments will require secure backend integration.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- PROFILE PAGE -->
+    <section id="profilePage"
+      class="page-section" hidden>
+
+      <h2>My Profile 👤</h2>
+
+      <div class="profile-card">
+        <div class="profile-avatar">ST</div>
+
+        <h3 id="profileName">ST TrustData User</h3>
+        <p>Prototype Account</p>
+
+        <div class="profile-detail">
+          <span>Account Type</span>
+          <strong>Test Account</strong>
+        </div>
+
+        <div class="profile-detail">
+          <span>Application</span>
+          <strong>ST TRUSTDATA</strong>
+        </div>
+
+        <div class="profile-detail">
+          <span>Account Status</span>
+          <strong>Prototype</strong>
+        </div>
+      </div>
+
+      <div class="trust-note">
+        <span>🔒</span>
+        <div>
+          <strong>Account Security</strong>
+          <p>
+            Registration, secure login and verified user profiles
+            will be added in a later development stage.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-nav">
+
+    <button class="active"
+      data-page="homePage"
+      onclick="showPage('homePage')">
+      🏠<span>Home</span>
+    </button>
+
+    <button
+      data-page="transactionsPage"
+      onclick="showPage('transactionsPage')">
+      📋<span>Transactions</span>
+    </button>
+
+    <button
+      data-page="walletPage"
+      onclick="showPage('walletPage')">
+      👛<span>Wallet</span>
+    </button>
+
+    <button
+      data-page="profilePage"
+      onclick="showPage('profilePage')">
+      👤<span>Profile</span>
+    </button>
+
+  </nav>
+
+ <script src="App.js"></script>
+
+</body>
+</html>
