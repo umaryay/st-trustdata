@@ -5,7 +5,9 @@ const registerForm = document.getElementById("registerForm");
 const message = document.getElementById("message");
 const registerButton = document.getElementById("registerButton");
 message.textContent = "Registration script loaded successfully!";
-
+alert("Register form found: " + !!registerForm);
+alert("Message area found: " + !!message);
+alert("Register button found: " + !!registerButton);
 registerForm.addEventListener("submit", async function(event) {
   event.preventDefault();
 
