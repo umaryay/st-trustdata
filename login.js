@@ -1,3 +1,4 @@
+alert("LOGIN.JS IS WORKING!");
 // ST TRUSTDATA - LOGIN SYSTEM
 
 const loginForm = document.getElementById("loginForm");
