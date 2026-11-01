@@ -90,7 +90,10 @@
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 
 <script src="firebase.js"></script>
-
+<script>
+  document.getElementById("message").textContent =
+    "HTML and JavaScript are connected!";
+</script>
 <script>
   alert("Firebase loaded: " + (typeof firebase));
   alert("Firebase Auth: " + (typeof firebase.auth));
