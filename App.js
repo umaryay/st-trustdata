@@ -234,3 +234,34 @@ function logout() {
       console.error(error);
     });
 }
+// EDIT USER PROFILE
+async function editProfile() {
+  const user = firebase.auth().currentUser;
+
+  if (!user) {
+    alert("Please login first.");
+    return;
+  }
+
+  const newName = prompt("Enter your new full name:", user.displayName || "");
+
+  if (!newName || newName.trim().length < 2) {
+    alert("Please enter a valid name.");
+    return;
+  }
+
+  try {
+    await user.updateProfile({
+      displayName: newName.trim()
+    });
+
+    document.getElementById("profileName").textContent =
+      newName.trim();
+
+    alert("Profile updated successfully!");
+
+  } catch (error) {
+    console.error(error);
+    alert("Unable to update profile. Please try again.");
+  }
+            }
